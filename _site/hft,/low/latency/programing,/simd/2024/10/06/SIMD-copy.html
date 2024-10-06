@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SIMD (Single Instruction, Multiple Data) | Edelweiss Global Markets</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="SIMD (Single Instruction, Multiple Data)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SIMD" />
+<meta property="og:description" content="SIMD" />
+<link rel="canonical" href="http://localhost:4000/hft,/low/latency/programing,/simd/2024/10/06/SIMD-copy.html" />
+<meta property="og:url" content="http://localhost:4000/hft,/low/latency/programing,/simd/2024/10/06/SIMD-copy.html" />
+<meta property="og:site_name" content="Edelweiss Global Markets" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-10-06T17:03:16+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SIMD (Single Instruction, Multiple Data)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-10-06T17:03:16+05:30","datePublished":"2024-10-06T17:03:16+05:30","description":"SIMD","headline":"SIMD (Single Instruction, Multiple Data)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/hft,/low/latency/programing,/simd/2024/10/06/SIMD-copy.html"},"url":"http://localhost:4000/hft,/low/latency/programing,/simd/2024/10/06/SIMD-copy.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Edelweiss Global Markets" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Edelweiss Global Markets</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">SIMD (Single Instruction, Multiple Data)</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-10-06T17:03:16+05:30" itemprop="datePublished">Oct 6, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="simd">SIMD</h1>
+
+<p>SIMD (Single Instruction, Multiple Data) is a technology that allows a single instruction to perform the same operation on multiple data points simultaneously. In modern processors, SIMD is implemented through specialized registers (e.g., SSE, AVX in Intel processors) that can hold multiple data elements (like integers or floating-point numbers) and execute operations on all elements in parallel. SIMD plays a crucial role in the context of High-Frequency Trading (HFT) by offering notable performance improvements in data processing, which is essential for making rapid trading decisions.
+<br /></p>
+
+<h1 id="use-of-simd-in-hft">Use of SIMD in HFT</h1>
+
+<ol>
+  <li>Data Processing Efficiency:
+Vectorization: HFT algorithms frequently require real-time processing of substantial volumes of market data. Algorithms may handle several data points (e.g., prices, volumes) simultaneously thanks to SIMD instructions, which cuts down on computation time.</li>
+  <li>Algorithm Optimization:
+Statistical Analysis: SIMD can help huge datasets be handled more effectively by algorithms that carry out statistical analysis, such as volatility computations or correlation analyses between securities. In HFT, moving averages are commonly used to analyze trends in market data. SIMD can accelerate calculations of moving averages by performing simultaneous additions or multiplications across multiple data points.</li>
+  <li>Market Data Feeds:
+Data Feeds Processing: SIMD can enhance the processing of incoming market data feeds, including parsing, filtering, and transforming data formats. This capability is crucial for extracting actionable insights and reacting quickly to market changes.</li>
+  <li>Risk Management:
+Real-Time Risk Analysis: SIMD aids in real-time risk management by accelerating calculations related to portfolio exposure, risk metrics (e.g., Value-at-Risk), and scenario analysis. This enables traders to make informed decisions swiftly.
+<br /></li>
+</ol>
+
+<h1 id="explainer">Explainer</h1>
+<p>Single Instruction Multiple Data (SIMD) is a parallel computing architecture where a single control unit dispatches the same instruction to multiple processing units simultaneously. Each processing unit then operates on a different set of data. This architecture is particularly effective for tasks that require the same operation to be applied to multiple data points, such as image processing, scientific simulations, and matrix computations. In the provided diagram, instructions are sent from a central source to four processing units. Each processing unit receives the same instruction but processes distinct data inputs, allowing for efficient and simultaneous data processing across multiple units. This parallelism enhances performance by exploiting data-level parallelism within applications. Below is the diagram which explains the architecture for SIMD at CPU level.
+<br /> 
+ <img src="/images/SIMD_arch.png" alt="SIMD Arch" width="270" height="400" /></p>
+
+<p><br /> <br /></p>
+<h1 id="example-with-code">Example with Code</h1>
+<p>Below C++ example calculates a simple moving average. We have two implementations, the first without SIMD and the second with SIMD.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">//Function which calculates simple moving average without any SIMD instructions</span>
+<span class="kt">void</span> <span class="nf">calculate_sma_non_simd</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">prices</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">sma</span><span class="p">,</span> <span class="kt">int</span> <span class="n">window_size</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">sum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">sma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">window_size</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">//Function which calculates simple moving average using SIMD instructions</span>
+<span class="kt">void</span> <span class="nf">calculate_sma_simd</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">prices</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">sma</span><span class="p">,</span> <span class="kt">int</span> <span class="n">window_size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="n">__m256</span> <span class="n">inv_window_size</span> <span class="o">=</span> <span class="n">_mm256_set1_ps</span><span class="p">(</span><span class="mf">1.0</span><span class="n">f</span> <span class="o">/</span> <span class="n">window_size</span><span class="p">);</span>
+ 
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">__m256</span> <span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_setzero_ps</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">window_size</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">j</span><span class="p">]);</span>
+            <span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">__m256</span> <span class="n">sma_vec</span> <span class="o">=</span> <span class="n">_mm256_mul_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">inv_window_size</span><span class="p">);</span>
+        <span class="n">_mm256_storeu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sma</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sma_vec</span><span class="p">);</span>
+    <span class="p">}</span>
+ 
+    <span class="c1">// Handle the remaining elements</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="p">(</span><span class="n">size</span> <span class="o">%</span> <span class="mi">8</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">sum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">sma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">window_size</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><br /> 
+<strong>Example Run</strong></p>
+
+<p>Assume we have a price vector with 16 elements and a window size of 4:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">sma</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">window_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span></code></pre></figure>
+
+<p>Initial Values
+    • window_size: 4
+    • inv_window_size: 1.0/4=0.25 , 1.0 / 4 = 0.25, 1.0/4=0.25
+    • Loop starts at: i = window_size - 1 = 3</p>
+
+<p>Iteration Breakdown
+First Iteration (i = 3)
+Initialize sum_vec to zero:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_setzero_ps</span><span class="p">();</span> <span class="c1">// sum_vec = [0, 0, 0, 0, 0, 0, 0, 0]</span></code></pre></figure>
+
+<p>Inner loop to sum up the prices over the window for 8 elements:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">window_size</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+       <span class="c1">// load prices[0+j] to prices[7+j]</span>
+	<span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">j</span><span class="p">]);</span> 
+	<span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>j = 0: Load prices [1, 2, 3, 4, 5, 6, 7, 8]</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// [1, 2, 3, 4, 5, 6, 7, 8]</span>
+<span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span>  <span class="c1">// sum_vec = [1, 2, 3, 4, 5, 6, 7, 8]</span></code></pre></figure>
+
+<p>j = 1: Load prices [2, 3, 4, 5, 6, 7, 8, 9]</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// [2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span><span class="c1">//sum_vec = [3, 5, 7, 9, 11, 13, 15, 17  </span></code></pre></figure>
+
+<p>j = 2: Load prices [3, 4, 5, 6, 7, 8, 9, 10]</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// [3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span>  <span class="c1">// sum_vec = [6, 9, 12, 15, 18, 21, 24, 27]</span></code></pre></figure>
+
+<p>j = 3: Load prices [4, 5, 6, 7, 8, 9, 10, 11]</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">price_vec</span> <span class="o">=</span> <span class="n">_mm256_loadu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">prices</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span> <span class="c1">// [4, 5, 6, 7, 8, 9, 10, 11]</span>
+<span class="n">sum_vec</span> <span class="o">=</span> <span class="n">_mm256_add_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">price_vec</span><span class="p">);</span><span class="c1">// sum_vec = [10, 14, 18, 22, 26, 30, 34, 38]</span></code></pre></figure>
+
+<p>Calculate SMA:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">__m256</span> <span class="n">sma_vec</span> <span class="o">=</span> <span class="n">_mm256_mul_ps</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">,</span> <span class="n">inv_window_size</span><span class="p">);</span> <span class="c1">// sma_vec = sum_vec * 0.25 = [2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5]</span></code></pre></figure>
+
+<p>Store result in the sma vector:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">_mm256_storeu_ps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sma</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">sma_vec</span><span class="p">);</span> <span class="c1">//sma[3] to sma[10] = [2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5]</span></code></pre></figure>
+
+<p><br /> 
+<strong>Results</strong></p>
+<ul>
+  <li>For the largest array size, the speedup factor is approximately 32624/7476 ​≈ 4.36.</li>
+  <li>For the medium array size, the speedup factor is approximately 3383/754 ​≈ 4.49.</li>
+  <li>For the smallest array size, the speedup factor is approximately 336/76 ≈ 4.42.
+<img src="/images/SIMD_results.png" alt="SIMD Results" />
+<br /> <br />
+    <h1 id="conclusion">Conclusion</h1>
+    <p>SIMD instruction is instrumental in HFT for optimizing data processing speed, enhancing algorithm performance, and meeting the stringent low-latency requirements of trading strategies. By leveraging SIMD instructions effectively, HFT firms can gain a competitive edge through faster data analysis, more efficient decision-making, and superior execution capabilities in fast-paced financial markets.</p>
+  </li>
+</ul>
+
+  </div><a class="u-url" href="/hft,/low/latency/programing,/simd/2024/10/06/SIMD-copy.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Edelweiss Global Markets</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Edelweiss Global Markets</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/edelweissgm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">edelweissgm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>We are Edelweiss Global Markets</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
